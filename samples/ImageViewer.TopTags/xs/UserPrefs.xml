@@ -1,0 +1,26 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workbench ActiveDocument="aws-lambda-tools-defaults.json">
+    <Files>
+      <File FileName="aws-lambda-tools-defaults.json" Line="17" Column="63" />
+      <File FileName="Function.cs" Line="33" Column="77" />
+      <File FileName="Readme.md" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="ImageViewer.TopTags" expanded="True">
+            <Node name="ImageViewer.TopTags" expanded="True">
+              <Node name="aws-lambda-tools-defaults.json" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
