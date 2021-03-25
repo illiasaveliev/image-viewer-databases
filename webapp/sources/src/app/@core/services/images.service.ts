@@ -8,8 +8,8 @@ import { Observable } from 'rxjs';
 export class ImagesService implements ImagesData {
 
     protected dataUrl = environment.serverUrl;
-    protected s3Proxy = this.dataUrl + "s3proxy/";
-    protected images = this.dataUrl + "images/";
+    protected s3Proxy = this.dataUrl + 's3proxy/';
+    protected images = this.dataUrl + 'images/';
 
     constructor(private http: HttpClient) {
     }
@@ -39,7 +39,7 @@ export class ImagesService implements ImagesData {
     }
 
     deleteImage(id: string, name: string): Observable<Object> {
-        return this.http.delete(this.s3Proxy + "?id=" + id + "&key=" + name);
+        return this.http.delete(this.s3Proxy + '?id=' + id + '&key=' + name);
     }
 
     startUpload(image: any): Observable<Object> {
