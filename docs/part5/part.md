@@ -29,6 +29,7 @@ services.AddTransient<IImagesRepository>(c => new ImagesDynamoDbRepository(Confi
 ~~~
 
 4. Publish a new version to the AWS.
+5. Add **AmazonDynamoDBFullAccess** policy to the function's role.
 
 ## Redeploy Image Viewer labeling function
 
@@ -43,8 +44,9 @@ await SaveToDynamoDbAsync(record.S3.Object.Key, record.S3.Object.ETag, record.S3
 ~~~
 
 4. Publish a new version of the Image Viewer Labeling function.
+5. Add **AmazonDynamoDBFullAccess** policy to the function's role.
 
-5. The application works with DynamoDB now! Try to label new images.
+6. The application works with DynamoDB now! Try to label new images.
     - Open the **Image Viewer** web site and upload new image.
     - Find new image in the table and examine created tags for it. It may take some time so use a **Refresh** button to update table
 

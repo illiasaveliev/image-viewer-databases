@@ -46,7 +46,7 @@ namespace ImageViewer.API
 
             //services.AddTransient<IImagesRepository>(c => new ImagesDynamoDbRepository(Configuration["DynamoDbImagesTable"]));
 
-            services.AddTransient<IImagesRepository>(c => new ImagesAuroraRepository(Configuration["AuroraSecretArn"], Configuration["AuroraArn"], Configuration["DatabaseName"]));
+            services.AddTransient<IImagesRepository>(c => new ImagesAuroraRepository(Configuration["AuroraArn"], Configuration["AuroraSecretArn"], Configuration["DatabaseName"]));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline

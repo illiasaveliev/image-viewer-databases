@@ -43,7 +43,9 @@ dotnet lambda deploy-function
 
 5. Choose **Create a new IAM role** and enter **lambda_exec_image_viewer_top_tags** or similar role name.
 
-6. Choose a new role base on **AWSLambdaFullAccess** policy and deploy function.
+6. Choose a new role base on **AWSLambda_FullAccess** policy and deploy function.
+
+7. After deploy add **AmazonDynamoDBFullAccess**  and **AWSLambdaExecute** policies to the function's role.
 
 ## Configure DynamoDB Trigger
 

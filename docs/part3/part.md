@@ -10,19 +10,19 @@
     aws cloudformation deploy --force-upload --no-fail-on-empty-changeset --stack-name "image-viewer-web-app" --template-file deploy.yml
     ~~~
 
-4. Open the **AWS Console**, go to the **CloudFormation** service. Wait until **image-viewer-web-app** stack will be in the completed state.
+4. Open the **AWS Console**, go to the **CloudFormation** service. Wait until **image-viewer-web-app** stack will be in the completed state. **Note** It can take up to 20 minutes to create a new CloudFront distribution.
 5. Examine outputs tab. Check the created **CloudFront domain**.
 
 ## Configure Web application
 
 1. Open **webapp\build\assets\env\environment.values.js** file
 2. Enter the next settings
-    - **serverUrl** - the newly created **Image Viewer API**, for example, <https://x8tvwsuzlj.execute-api.eu-west-1.amazonaws.com/Prod/api/s3proxy/>
+    - **serverUrl** - the newly created **Image Viewer API**, for example, <https://x8tvwsuzlj.execute-api.eu-west-1.amazonaws.com/Prod/api/>
     - **authUrl** –  go to the **Cognito User Pool** and get **Domain URL** plus add **oauth2/** suffix. For example <https://test-image.auth.eu-west-1.amazoncognito.com/oauth2/>
     - **clientId** – go to the **Cognito User Pool -> General settings -> App clients** and get **App client id**
     - **clientSecret** - go to **Cognito User Pool -> General settings -> App clients** and get **App client secret**
     - **redirectUrl** – put URL to the CloudFront with **/auth/callback/** suffix, for ex. <https://d11slzr9srg2n2.cloudfront.net/auth/callback/>
-3. Deploy files to **S3** using the next command
+3. Deploy files to **S3** using the next command. Just replace the bucket name
 
     ~~~bash
     aws s3 sync --cache-control 'no-cache' build/ s3://image-viewer-web-app/Deploy/build
@@ -90,6 +90,6 @@ There are two options how to get access to the **Image Viewer** application
 
 2. Use created user to **Sign in**
 
-3. Check that **Image Viewer** application works. Try to upload new images.
+3. Check that **Image Viewer** application works. Try to upload new images and see them on S3 bucket.
 
-The **Image Viewer** web site is ready now. Then we need to store information about uploaded images in the database. Follow the instructions from the next part [Part 4 – Store images in Amazon Aurora Serverless](../part4/part.md).
+The **Image Viewer** web site is ready now. Then we need to store information about uploaded images in the database. After this the images will be displayed on a web site. Follow the instructions from the next part [Part 4 – Store images in Amazon Aurora Serverless](../part4/part.md).

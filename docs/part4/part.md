@@ -34,6 +34,7 @@
 
 2. In the **Connect to database** window enter the next parameters and press **Connect**
 - **image-viewer** - database cluster
+- Select **Add new database credentials** and enter
 - **admin** - database username
 - **Master password** - database password
 - **images** - database name
@@ -64,17 +65,6 @@ PRIMARY KEY (id),
 FOREIGN KEY (imageId) REFERENCES images(id));
 ~~~
 
-## Redeploy Image Viewer API
-
-1. Open **appsettings.json** file and set Aurora Database parameters:
-- **DatabaseName** - set **images**
-- **AuroraArn** - the ARN of Aurora cluster, you can get it in the **Configuration** section in your cluster
-- **AuroraSecretArn** - go to the **Secrets Manager** in the AWS Console and select secret with DB credentials, something starts with **rds-db-credentials...**, and grab **Secret ARN**.
-
-2. Examine the **Services/ImagesAuroraRepository.cs** file where the main work with Amazon Aurora is placed. For our purposes we need only two requests to get all images and delete image. We use Auroras **Data API** to work with database.
-
-3. Publish a new version to the AWS.
-
 ## Deploy Image Viewer labeling function
 
 1. Open an **ImageViewer.Labeling.sln** solution from the **samples/ImageViewer.Labeling** folder
@@ -102,7 +92,7 @@ FOREIGN KEY (imageId) REFERENCES images(id));
 
      ![alt text](9.png)
 
-## Add permissions to call AWS Rekognition service
+## Add permissions to call AWS Rekognition and other services
 
 1. Select **Configuration** part and then **Permissions** tab. In the **Execution Role** section press on role name and go to the IAM console.
 
@@ -117,6 +107,20 @@ FOREIGN KEY (imageId) REFERENCES images(id));
      ![alt text](12.png)
 
 4. Press **Attach** policy
+
+5. In the same manner add **AmazonRDSDataFullAccess** and **AWSLambdaExecute** policies.
+
+## Redeploy Image Viewer API
+
+1. Open **appsettings.json** file and set Aurora Database parameters:
+- **DatabaseName** - set **images**
+- **AuroraArn** - the ARN of Aurora cluster, you can get it in the **Configuration** section in your cluster
+- **AuroraSecretArn** - go to the **Secrets Manager** in the AWS Console and select secret with DB credentials, something starts with **rds-db-credentials...**, and grab **Secret ARN**.
+
+2. Examine the **Services/ImagesAuroraRepository.cs** file where the main work with Amazon Aurora is placed. For our purposes we need only two requests to get all images and delete image. We use Auroras **Data API** to work with database.
+
+3. Publish a new version to the AWS.
+4. Add **AmazonRDSDataFullAccess** policy to the role of Lambda API function.
 
 5. The application is ready now! Try to label new images.
     - Open the **Image Viewer** web site and upload new image.
