@@ -31,7 +31,7 @@ namespace ImageViewer.API.Services
                  
             };
 
-            return (await client.ScanAsync(scanRequest)).Items.Select(ToImageModel);
+            return (await client.ScanAsync(scanRequest)).Items?.Select(ToImageModel);
         }
 
         public async Task DeleteAsync(string id, string key)

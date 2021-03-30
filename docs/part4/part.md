@@ -102,7 +102,7 @@ FOREIGN KEY (imageId) REFERENCES images(id));
 
      ![alt text](11.png)
 
-3. Select **AWSRekognitionFullAccess**
+3. Select **AmazonRekognitionFullAccess**
 
      ![alt text](12.png)
 
